@@ -8,6 +8,11 @@ const initialState = require('./initialState')(folder);
 const reducer = require('./reducer')(folder);
 const constants = require('./constants')(folder);
 
+const actionsPath =  path.join(__dirname, `${folder}/${folder}.action.js`);
+const reducerPath = path.join(__dirname, `${folder}/${folder}.reducer.js`)
+const constantsPath = path.join(__dirname, `${folder}/${folder}.constants.js`);
+const initialStatePath = path.join(__dirname, `${folder}/${folder}.initialState.js`);
+
 const writeFolder = (folderPath) => (
   new Promise((res, rej) => {
     fs.mkdir(folderPath, 0777, (err) => {
@@ -36,10 +41,10 @@ const writeFile = (file, filePath) => (
 );
 
 writeFolder(path.join(__dirname, folder))
-  .then(d => writeFile(actions, path.join(__dirname, `${folder}/${folder}.action.js`)))
-  .then(d => writeFile(initialState, path.join(__dirname, `${folder}/${folder}.initialState.js`)))
-  .then(d => writeFile(reducer, path.join(__dirname, `${folder}/${folder}.reducer.js`)))
-  .then(d => writeFile(constants, path.join(__dirname, `${folder}/${folder}.constatns.js`)))
+  .then(d => writeFile(actions, actionsPath))
+  .then(d => writeFile(initialState, initialStatePath))
+  .then(d => writeFile(reducer, reducerPath))
+  .then(d => writeFile(constants, constantsPath))
   .then(d => { console.log(`*** Redux-Folder-Creator create ${folder} ***`)})
   .catch(err => console.log(err));
 
