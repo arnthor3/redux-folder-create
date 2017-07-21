@@ -1,54 +1,11 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
-const EXISTS = 'EEXIST';
-console.log(process.cwd())
-const relativePath = process.cwd();
-const folder = process.argv[2];
+const writeFiles = require('./writeFiles');
+const createFiles = require('./createFiles');
+const cmdParser = require('./cmdParser');
 
-const actions = require('./actions')(folder);
-const initialState = require('./initialState')(folder);
-const reducer = require('./reducer')(folder);
-const constants = require('./constants')(folder);
+const cmd = cmdParser(process.argv);
 
-const actionsPath =  path.join(relativePath, `${folder}/${folder}.action.js`);
-const reducerPath = path.join(relativePath, `${folder}/${folder}.reducer.js`)
-const constantsPath = path.join(relativePath, `${folder}/${folder}.constants.js`);
-const initialStatePath = path.join(relativePath, `${folder}/${folder}.initialState.js`);
-
-const writeFolder = (folderPath) => (
-  new Promise((res, rej) => {
-    fs.mkdir(folderPath, 0777, (err) => {
-      if (err) {
-        if (err.code = EXISTS) {
-          res('ok');
-        } else {
-          rej(err);
-        }
-      } else {
-        res ('ok');
-      }
-    })
-  })
-);
-
-const writeFile = (file, filePath) => (
-  new Promise((res, rej) => {
-    fs.writeFile(filePath, file, (err) => {
-      if (err) {
-        rej(err);
-      }
-      res('ok');
-    });
-  })
-);
-
-writeFolder(path.join(relativePath, folder))
-  .then(d => writeFile(actions, actionsPath))
-  .then(d => writeFile(initialState, initialStatePath))
-  .then(d => writeFile(reducer, reducerPath))
-  .then(d => writeFile(constants, constantsPath))
-  .then(d => { console.log(`*** Redux-Folder-Creator create ${folder} ***`)})
-  .catch(err => console.log(err));
-
-
+const files = createFiles(cmd);
+writeFiles(files, cmd.folder);

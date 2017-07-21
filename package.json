@@ -1,19 +1,27 @@
 {
   "name": "redux-folder-create",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "a small npm command line that sets up redux folder in an opinionated way",
   "main": "index.js",
   "bin": {
     "redux-folder-create": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --recursive"
   },
   "keywords": [
     "node",
     "tool",
-    "react-redux"
+    "redux"
   ],
   "author": "arnthor3@gmail.com",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.0",
+    "mocha": "^3.4.2",
+    "sinon": "^2.3.8"
+  },
+  "dependencies": {
+    "ejs": "^2.5.6"
+  }
 }

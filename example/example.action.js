@@ -1,1 +1,0 @@
-import * as CONSTANTS from './example.constants.js'
