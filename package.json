@@ -1,6 +1,6 @@
 {
   "name": "redux-folder-create",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "a small npm command line that sets up redux folder in an opinionated way",
   "main": "index.js",
   "bin": {

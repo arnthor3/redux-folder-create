@@ -1,5 +1,15 @@
-#redux-folder-creator
+# redux-folder-create
 
-Just a little tool that I made to create redux folders, for those who group actions constants store and initialstate in the same folder.
+Just a little tool that I made to create redux folders, for those who group actions, constants, reducer and initialstate in the same folder.
 
-Install npm
+## Install
+```sh
+npm redux-folder-create -g
+```
+## Using
+```sh
+redux-folder-create someFeature
+```
+
+## Licence
+Arnthor Agustsson 2017, MIT
