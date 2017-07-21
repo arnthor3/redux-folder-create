@@ -1,0 +1,16 @@
+{
+  "name": "redux-folder-creator",
+  "version": "0.0.1",
+  "description": "a small npm command line that sets up redux folder in an opinionated way",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "node",
+    "tool",
+    "react-redux"
+  ],
+  "author": "arnthor3@gmail.com",
+  "license": "MIT"
+}
