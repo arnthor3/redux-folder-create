@@ -11,16 +11,16 @@ global.assert = chai.assert;
 
 const actions = [{
   "action": "onSubmit",
-  "constants": "ON_SUBMIT",
+  "constant": "TEST_ON_SUBMIT",
 }, {
   "action": "onSubmitError",
-  "constants": "ON_SUBMIT_ERROR",
+  "constant": "TEST_ON_SUBMIT_ERROR",
 }, {
   "action": "isFormReady",
-  "constants": "IS_FORM_READY",
+  "constant": "TEST_IS_FORM_READY",
 }, {
   "action": "testActions",
-  "constants": "TEST_ACTIONS",
+  "constant": "TEST_TEST_ACTIONS",
 }];
 
 describe('cmd-parser', () => {
@@ -40,13 +40,17 @@ describe('cmd-parser', () => {
     expect(cmdParser(['path', 'path', '-f', 'test', '-a', 'onSubmit', 'onSubmitError', 'isFormReady', 'testActions']))
       .to.deep.equal({
         folder: 'test',
-        actions
+        actions,
+        projectPath: 'path',
+        update: false,
       });
 
     expect(cmdParser(['path', 'path','-a', 'onSubmit', 'onSubmitError', 'isFormReady', 'testActions', '-f', 'test']))
       .to.deep.equal({
         folder: 'test',
-        actions
+        actions,
+        projectPath: 'path',
+        update: false,
       });
 
   });

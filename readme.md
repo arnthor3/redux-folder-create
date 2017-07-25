@@ -1,22 +1,27 @@
 # redux-folder-create
 A little tool that creates a redux folder with a actions, constants reducer and the initial state file.
 
-## Structure - Group by features not by type
-For those who group by types this tool will not help you, but if you are grouping by features this will speed up your development by giving you a nice boilerplate to start with.
+## Structure - Group By Feature
+Redux-Folder-Create helps you structure your code by features and not by types. The application also namespaces the files within the folder helping users who use <pre>cmd + p</pre> frequently.
+
+## Constants
+By default the constants are namespaced with the feature name you can use the -c to skip that.
 
 ## Install
+This project is available as an npm package.
 ```sh
 npm redux-folder-create -g
 ```
-## Using
-The command line looks for two arguments -f for folder, -a for actions. The -f option is required but the actions argument is optional.
 
-You could create a simple setup folder setup by using just the -f option. This will create all the files but most of them will be without any code.
+## Using
+The command line looks for two arguments -f for folder, -a for actions.
+If you are just using the just the -a option you need to be in the redux directory.
+
+You could create a simple folder setup by using just the -f option. This will create all the files but most of them will be without any code.
 
 ```sh
 redux-folder-create -f someFeature
 ```
-
 The real timesaver comes from using the actions argument. It will create the constants and the actions
 
 ```sh
@@ -38,6 +43,10 @@ FOO/
 The Example folder has an output from the command below.
 ```sh
 redux-folder-create -f example -a onSubmit onClick onResolve
+```
+and then
+```sh
+redux-folder-create -a onDone onError clickBanner
 ```
 
 ## Licence
