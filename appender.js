@@ -1,0 +1,7 @@
+/*
+  appender should be started from redux folder
+  check if the files exists
+  append to constants
+  append to actions
+  append to reducer
+*/
