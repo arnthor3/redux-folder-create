@@ -1,8 +1,8 @@
 # redux-folder-create
-A little tool that creates a redux folder with a actions, constants reducer and the initial state file.
+A little scaffolding tool that creates a redux folder with a actions, constants reducer and the initial state file.
 
 ## Structure - Group By Feature
-Redux-Folder-Create helps you structure your code by features and not by types. The application also namespaces the files within the folder helping users who use <pre>cmd + p</pre> frequently.
+Redux-Folder-Create helps you structure your code by features and not by types. The application also namespaces the files within the folder helping users who use <kbd>cmd</kbd> + <kbd>p</kbd> frequently to look for files.
 
 ## Constants
 By default the constants are namespaced with the feature name you can use the -c to skip that.
