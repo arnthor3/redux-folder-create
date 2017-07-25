@@ -17,7 +17,14 @@ module.exports = (arr) => {
   let actions = [];
   let folder = '';
 
-  if (actionIndex > 0) {
+  if (actionIndex > 0 && folderIndex < 0) {
+    // search folder for folder.actions.js
+    // search folder for folder.constants.js
+    // search folder for folder.reducer.js
+    // if not found throw error
+    // if found append new functions
+    
+  } else if (actionIndex > 0) {
     let actionTo = actionIndex > folderIndex ? arr.length : folderIndex;
     folder = arr[folderIndex + 1];
     actions = require('./actions')(arr.slice(actionIndex + 1, actionTo));

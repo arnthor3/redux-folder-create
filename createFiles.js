@@ -3,6 +3,12 @@ const path = require('path');
 
 const directory = process.cwd();
 
+/**
+ * Creates the path for the file to be saved to
+ * @param {string} type The type of file to be created
+ * @param {string} folder The folder name
+ * @returns Void
+ */
 const strFile = (type, folder) => (
   path.join(directory, `${folder}/${folder}.${type}.js`)
 );
