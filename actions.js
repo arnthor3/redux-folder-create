@@ -17,9 +17,10 @@ const createConstant = (constant, namespace = '') => {
  * Creates the constants from the action array and returns it as an array of
  * objects.
  * @param {Array} arr An Array of actions
+ * @param {string} namespace
  * @returns {Array} An Array of objects
  */
-module.exports = (arr = [], namespace) => {
+module.exports = (arr = [], namespace = '') => {
   if (arr.length === 0) {
     return [];
   }

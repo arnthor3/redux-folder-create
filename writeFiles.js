@@ -1,27 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const EXISTS = 'EEXIST';
 
-/**
- * Create the folder
- * @param {string} folderPath
- * @returns Promise
- */
-const writeFolder = (folderPath) => (
-  new Promise((res, rej) => {
-    fs.mkdir(folderPath, 0777, (err) => {
-      if (err) {
-        if (err.code = EXISTS) {
-          res('ok');
-        } else {
-          rej(err);
-        }
-      } else {
-        res ('ok');
-      }
-    })
-  })
-);
 /**
  * Create the file
  * @param {string} file
@@ -40,21 +19,17 @@ const writeFile = ({ file, path }) => (
   })
 );
 
+const writeFiles = (files) => {
+  const filesArr = Object.keys(files).map(d => files[d]);
+  const promises = filesArr.map(d => writeFile(d));
+  return Promise.all(promises);
+}
+
 /**
  * Creates the direcory and the files
  * @param {object} files
  * @param {string} folder
  * @returns Promise
  */
-module.exports = (files, folder) => {
-  return new Promise((res, rej) => {
-    writeFolder(path.join(process.cwd(), folder))
-      .then(d => writeFile(files.actions))
-      .then(d => writeFile(files.initialState))
-      .then(d => writeFile(files.reducer))
-      .then(d => writeFile(files.constants))
-      .then(d => { res(); })
-      .catch(err => rej(err));
-  })
-}
+module.exports = writeFiles;
 

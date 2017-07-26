@@ -4,6 +4,7 @@ const path = require('path');
 const readFile = (type, fileArray = []) => {
   return new Promise((res, rej) => {
     const fileIndex = fileArray.findIndex(d => d.indexOf(type) !== -1);
+    if (fileIndex < 0) rej('file not found');
     fs.readFile(fileArray[fileIndex], 'utf-8', (err, data) => {
       if (err) rej(err);
       res(data);
@@ -28,8 +29,13 @@ const readdir = () => {
 }
 
 const concat = (promisedFiles, files) => {
-
-}
+  return new Promise((res, rej) => {
+    files.constants.file += promisedFiles[0];
+    files.reducer.file += promisedFiles[1];
+    files.actions.file += promisedFiles[2];
+    res(files);
+  });
+};
 
 
 module.exports = (files, cmd) => {
@@ -38,7 +44,7 @@ module.exports = (files, cmd) => {
       res(files, cmd.folder);
     }
     readdir()
-      .then(concat)
+      .then((pf) => { return concat(pf, files) })
       .then(f => { res(f, cmd.folder)})
       .catch(err => rej(err));
   });

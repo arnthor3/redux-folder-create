@@ -1,3 +1,4 @@
+const path = require('path');
 /**
  * @param {array} arr - the arguments array
  * @return {object}
@@ -13,7 +14,7 @@ module.exports = (arr) => {
 
   const folderIndex = arr.findIndex((i) => (i.toLowerCase && i.toLowerCase()) === '-f');
   const actionIndex = arr.findIndex((i) => (i.toLowerCase && i.toLowerCase()) === '-a');
-  const update = false;
+  let update = false;
 
   if (folderIndex < 0 && actionIndex < 0) {
     throw Error('need -f or -a option to be set');
@@ -24,9 +25,8 @@ module.exports = (arr) => {
 
   if (actionIndex > 0 && folderIndex < 0) {
     update = true;
-    const currPath = process.cwd().split('/');
-    folder = currPath[currPath.length - 1];
-    actions = require('./actions')(arr.slice(actionIndex + 1, actionTo), folder);
+    const currPath = path.dirname(process.cwd());
+    actions = require('./actions')(arr.slice(actionIndex + 1, arr.length), folder);
   } else if (actionIndex > 0) {
     let actionTo = actionIndex > folderIndex ? arr.length : folderIndex;
     folder = arr[folderIndex + 1];

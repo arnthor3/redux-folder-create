@@ -14,7 +14,12 @@ const strFile = (type, folder) => (
 );
 
 module.exports = (cmd) => {
-  return {
+  const initialState = (
+    { initialState: {
+      file: ejs.render(require('./templates/initialState'), cmd),
+      path: strFile('initialState', cmd.folder),
+    }})
+  const files = {
     actions: {
       file: ejs.render(require('./templates/actions'), cmd),
       path: strFile('actions', cmd.folder),
@@ -26,10 +31,10 @@ module.exports = (cmd) => {
     constants: {
       file: ejs.render(require('./templates/constants'), cmd),
       path: strFile('constants', cmd.folder),
-    },
-    initialState: {
-      file: ejs.render(require('./templates/initialState'), cmd),
-      path: strFile('initialState', cmd.folder),
     }
+  };
+  if (!cmd.update) {
+    return Object.assign({}, files, initialState);
   }
+  return files;
 };
