@@ -3,25 +3,9 @@ const cmdParser = require('../cmdParser.js');
 const chai = require('chai');
 const sinon = require('sinon');
 
-chai.config.includeStack = true;
-global.expect = chai.expect;
-global.AssertionError = chai.AssertionError;
-global.Assertion = chai.Assertion;
-global.assert = chai.assert;
+const config = require('./config');
 
-const actions = [{
-  "action": "onSubmit",
-  "constant": "TEST_ON_SUBMIT",
-}, {
-  "action": "onSubmitError",
-  "constant": "TEST_ON_SUBMIT_ERROR",
-}, {
-  "action": "isFormReady",
-  "constant": "TEST_IS_FORM_READY",
-}, {
-  "action": "testActions",
-  "constant": "TEST_TEST_ACTIONS",
-}];
+config.init();
 
 describe('cmd-parser', () => {
   it('should accept an array', () => {
@@ -40,7 +24,7 @@ describe('cmd-parser', () => {
     expect(cmdParser(['path', 'path', '-f', 'test', '-a', 'onSubmit', 'onSubmitError', 'isFormReady', 'testActions']))
       .to.deep.equal({
         folder: 'test',
-        actions,
+        actions: config.actions,
         projectPath: 'path',
         update: false,
       });
@@ -48,7 +32,7 @@ describe('cmd-parser', () => {
     expect(cmdParser(['path', 'path','-a', 'onSubmit', 'onSubmitError', 'isFormReady', 'testActions', '-f', 'test']))
       .to.deep.equal({
         folder: 'test',
-        actions,
+        actions: config.actions,
         projectPath: 'path',
         update: false,
       });
