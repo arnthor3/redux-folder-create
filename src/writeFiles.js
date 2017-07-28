@@ -31,5 +31,8 @@ const writeFiles = (files) => {
  * @param {string} folder
  * @returns Promise
  */
-module.exports = writeFiles;
+module.exports = {
+  writeFile,
+  writeFiles,
+};
 

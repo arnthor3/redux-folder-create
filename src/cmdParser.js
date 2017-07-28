@@ -24,21 +24,18 @@ module.exports = (arr) => {
   let folder = '';
 
   if (actionIndex > 0 && folderIndex < 0) {
-    update = true;
     const currPath = path.dirname(process.cwd());
-    actions = require('./actions')(arr.slice(actionIndex + 1, arr.length), folder);
+    actions = arr.slice(actionIndex + 1, arr.length);
   } else if (actionIndex > 0) {
     let actionTo = actionIndex > folderIndex ? arr.length : folderIndex;
     folder = arr[folderIndex + 1];
-    actions = require('./actions')(arr.slice(actionIndex + 1, actionTo), folder);
+    actions = arr.slice(actionIndex + 1, actionTo);
   } else if (typeof arr[folderIndex + 1] !== undefined) {
     folder = arr[folderIndex + 1];
   }
 
   return {
-    projectPath: arr[1],
     folder,
     actions,
-    update,
   };
 }

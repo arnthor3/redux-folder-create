@@ -40,9 +40,6 @@ const concat = (promisedFiles, files) => {
 
 module.exports = (files, cmd) => {
   return new Promise((res, rej) => {
-    if (!cmd.update) {
-      res(files, cmd.folder);
-    }
     readdir()
       .then((pf) => { return concat(pf, files) })
       .then(f => { res(f, cmd.folder)})

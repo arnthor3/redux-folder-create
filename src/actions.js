@@ -20,12 +20,12 @@ const createConstant = (constant, namespace = '') => {
  * @param {string} namespace
  * @returns {Array} An Array of objects
  */
-module.exports = (arr = [], namespace = '') => {
+module.exports = ({ arr, folder }) => {
   if (arr.length === 0) {
     return [];
   }
   return arr.map(d => ({
-      constant: createConstant(d, namespace),
+      constant: createConstant(d, folder),
       action: d,
     })
   );

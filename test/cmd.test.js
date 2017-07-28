@@ -1,4 +1,4 @@
-const cmdParser = require('../cmdParser.js');
+const cmdParser = require('../src/cmdParser.js');
 
 const chai = require('chai');
 const sinon = require('sinon');
@@ -24,17 +24,13 @@ describe('cmd-parser', () => {
     expect(cmdParser(['path', 'path', '-f', 'test', '-a', 'onSubmit', 'onSubmitError', 'isFormReady', 'testActions']))
       .to.deep.equal({
         folder: 'test',
-        actions: config.actions,
-        projectPath: 'path',
-        update: false,
+        actions: config.testCmd,
       });
 
     expect(cmdParser(['path', 'path','-a', 'onSubmit', 'onSubmitError', 'isFormReady', 'testActions', '-f', 'test']))
       .to.deep.equal({
         folder: 'test',
-        actions: config.actions,
-        projectPath: 'path',
-        update: false,
+        actions: config.testCmd,
       });
 
   });
