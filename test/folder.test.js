@@ -15,7 +15,6 @@ describe('folder', () => {
       })
       .catch(err => {
         expect(true).to.equal(false);
-        console.log(err);
         done();
       })
   })

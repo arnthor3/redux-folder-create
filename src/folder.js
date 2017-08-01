@@ -21,12 +21,14 @@ const readDirPromise = (folderPath) => (
   })
 );
 
-const findFile = (file, type) => (
-  file.findIndex(d => d.indexOf(type) !== -1)
-);
-
+/**
+ * Looks for a file by type in the array
+ * @param {array} files
+ * @param {string} type
+ * @returns {string} the file path
+ */
 const returnFilePath = (files, type) => {
-  const index = findFile(files, type);
+  const index = files.findIndex(d => d.indexOf(type) !== -1);
   if (index !== -1) {
     return files[index];
   }
@@ -41,6 +43,11 @@ const findFiles = (files) => {
   return retObj;
 }
 
+/**
+ * Looks for the default structure in the folderpath.
+ * @param {string} folderPath
+ * @returns {Promise}
+ */
 folderModule.isStructureAvailable = (folderPath) => (
   new Promise((res, rej) => {
     readDirPromise(folderPath)
@@ -55,7 +62,7 @@ folderModule.isStructureAvailable = (folderPath) => (
  * @param {string} folder
  * @returns Promise
  */
-folderModule.writeFolder = ({ folder }) => (
+folderModule.createFolder = ({ folder }) => (
   new Promise((res, rej) => {
     fs.mkdir(path.join(process.cwd(), cmd.folder), 0777, (err) => {
       if (err) {
