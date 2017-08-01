@@ -19,10 +19,11 @@ if (cmd.actions.length !== 0) {
   cmd.actions = require('./src/actions')(cmd);
 }
 
+// Handles the concat case when a user uses just -a
 if (cmd.folder === process.cwd()) {
   folder.isStructureAvailable(cmd.folder)
     .then(d => {
-      const partialFiles = create.partials({ actions: config.actions, folder: 'test' });
+      const partialFiles = create.partials(cmd);
       const newFiles = files.concat(d, partialFiles);
       return files.writeAll(newFiles);
     })
@@ -31,12 +32,12 @@ if (cmd.folder === process.cwd()) {
     })
     .then(d => concat)
     .catch(console.error);
+
 } else {
   folder.create(cmd)
     .then(d => {
-      create.full
+      create.full(cmd);
     })
     .catch(console.error);
 }
 
-const files = require('./src/createFiles')(cmd);

@@ -14,7 +14,13 @@ module.exports = (arr) => {
 
   const folderIndex = arr.findIndex((i) => (i.toLowerCase && i.toLowerCase()) === '-f');
   const actionIndex = arr.findIndex((i) => (i.toLowerCase && i.toLowerCase()) === '-a');
-  let update = false;
+  const namespaceIndex = arr.findIndex((i) => (i.toLowerCase && i.toLowerCase()) === '-c');
+
+  if (namespaceIndex > -1) {
+    const arr1 = arr.slice(0, namespaceIndex);
+    const arr2 = arr.slice(namespaceIndex + 1, arr.length);
+    arr = [...arr1, ...arr2];
+  }
 
   if (folderIndex < 0 && actionIndex < 0) {
     throw Error('need -f or -a option to be set');
@@ -24,6 +30,7 @@ module.exports = (arr) => {
     return {
       actions: arr.slice(actionIndex + 1, arr.length),
       folder: '',
+      namespace: namespaceIndex > -1
     };
   }
 
@@ -32,12 +39,14 @@ module.exports = (arr) => {
     return {
       folder: arr[folderIndex + 1],
       actions: arr.slice(actionIndex + 1, actionTo),
+      namespace: namespaceIndex > -1
     };
   }
 
   if (typeof arr[folderIndex + 1] !== undefined) {
     return {
       folder: arr[folderIndex + 1],
+      namespace: namespaceIndex > -1
     }
   }
 }

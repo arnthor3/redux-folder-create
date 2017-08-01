@@ -21,16 +21,18 @@ describe('cmd-parser', () => {
   });
 
   it('should know how to read the arguments array', () => {
-    expect(cmdParser(['path', 'path', '-f', 'test', '-a', 'onSubmit', 'onSubmitError', 'isFormReady', 'testActions']))
+    expect(cmdParser(['path', 'path', '-f', 'test', '-a', 'onSubmit', 'onSubmitError', 'isFormReady', 'testActions', '-c']))
       .to.deep.equal({
         folder: 'test',
         actions: config.testCmd,
+        namespace: true,
       });
 
     expect(cmdParser(['path', 'path','-a', 'onSubmit', 'onSubmitError', 'isFormReady', 'testActions', '-f', 'test']))
       .to.deep.equal({
         folder: 'test',
         actions: config.testCmd,
+        namespace: false,
       });
 
   });
