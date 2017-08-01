@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const readFiles = require('./src/readFile');
+const folder = require('./src/folder');
 /**
  * Parse the command line arguments
  * if neither the -a or the -f options are set then it will stop
@@ -15,18 +16,27 @@ if (cmd.folder.length === 0) {
 
 // if the actions are set then create an array of objects
 if (cmd.actions.length !== 0) {
-  cmd.array = require('./src/actions')(cmd);
+  cmd.actions = require('./src/actions')(cmd);
 }
 
 if (cmd.folder === process.cwd()) {
-  const actions = readFiles.getActions(cmd.folder);
-  const reducer = readFiles.getReducer(cmd.folder);
-  const constants = readFiles.getConstants(cmd.folder);
-
-  const newActions = readFiles.concat(actions, cmd);
-  const newReducer = readFiles.concat(reducer, cmd);
-  const newConstants = readFiles.concat(constants, cmd);
-
+  folder.isStructureAvailable(cmd.folder)
+    .then(d => {
+      const partialFiles = create.partials({ actions: config.actions, folder: 'test' });
+      const newFiles = files.concat(d, partialFiles);
+      return files.writeAll(newFiles);
+    })
+    .then(d => {
+      console.log('DONE');
+    })
+    .then(d => concat)
+    .catch(console.error);
+} else {
+  folder.create(cmd)
+    .then(d => {
+      create.full
+    })
+    .catch(console.error);
 }
 
 const files = require('./src/createFiles')(cmd);

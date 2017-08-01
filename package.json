@@ -14,9 +14,9 @@
     "test": "mocha --recursive"
   },
   "keywords": [
-    "node",
     "tool",
-    "redux"
+    "redux",
+    "scaffolding"
   ],
   "author": "arnthor3@gmail.com",
   "license": "MIT",

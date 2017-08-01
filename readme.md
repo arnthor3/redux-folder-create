@@ -50,4 +50,4 @@ redux-folder-create -a onDone onError clickBanner
 ```
 
 ## Licence
-Arnthor Agustsson 2017, MIT
+MIT 2017, Arnthor Agustsson.
