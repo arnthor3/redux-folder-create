@@ -43,6 +43,7 @@ files.readStructure = (files, folder) => (
  */
 files.write = ({ file, path }) => (
   new Promise((res, rej) => {
+    console.log(path);
     fs.writeFile(path, file, (err) => {
       if (err) {
         rej(err);
@@ -53,9 +54,9 @@ files.write = ({ file, path }) => (
   })
 );
 
-files.writeAll = (files) => {
-  const filesArr = Object.keys(files).map(d => files[d]);
-  const promises = filesArr.map(d => writeFile(files[d]));
+files.writeAll = (f) => {
+  const filesArr = Object.keys(f);
+  const promises = filesArr.map(d => files.write(f[d]));
   return Promise.all(promises);
 }
 
@@ -64,7 +65,7 @@ files.concatReducer = (full, partial) => {
   return `${full.substr(0, indexOfDefault)}\n${partial}${full.substr(indexOfDefault, full.length)}`
 };
 
-files.concat = (file, partials) => ({
+files.concatenate = (file, partials) => ({
   constants: {
     file: `${file.constants}${partials.constants.file}`,
     path: partials.constants.path,

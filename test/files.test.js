@@ -27,7 +27,7 @@ describe('files', () => {
       .then(d => {
         const partialFiles = create.partials({ actions: config.actions, folder: 'test' });
         const newFiles = files.concat(d, partialFiles);
-        console.log(newFiles.reducer.path);
+        console.log(newFiles.actions.path);
         done();
       })
       .catch(err => {

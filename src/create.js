@@ -18,11 +18,12 @@ const strFile = (type, folder) => (
   path.join(directory, `${folder}/${folder}.${type}.js`)
 );
 
-const strFilePartials = (type, folder) => (
-  path.join(directory, `${folder}.${type}.js`)
-);
+const strFilePartials = (type, folder) => {
+  const name = folder.split('/');
+  return path.join(folder, `${name[name.length - 1]}.${type}.js`)
+};
 
-create.fullFiles = (cmd) => ({
+create.full = (cmd) => ({
   initialState: {
       file: require('../templates/initialState'),
       path: strFile('initialState', cmd.folder),

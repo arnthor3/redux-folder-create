@@ -64,7 +64,7 @@ folderModule.isStructureAvailable = (folderPath) => (
  */
 folderModule.createFolder = ({ folder }) => (
   new Promise((res, rej) => {
-    fs.mkdir(path.join(process.cwd(), cmd.folder), 0777, (err) => {
+    fs.mkdir(path.join(process.cwd(), folder), 0777, (err) => {
       if (err) {
         if (err.code = EXISTS) {
           res('ok');
