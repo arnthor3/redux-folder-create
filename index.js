@@ -36,7 +36,7 @@ if (cmd.folder === process.cwd()) {
 } else {
   folder.create(cmd)
     .then(d => {
-      create.full(cmd);
+      return files.writeAll(create.full(cmd));
     })
     .catch(console.error);
 }
