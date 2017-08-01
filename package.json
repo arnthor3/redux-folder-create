@@ -25,7 +25,5 @@
     "mocha": "^3.4.2",
     "sinon": "^2.3.8"
   },
-  "dependencies": {
-    "ejs": "^2.5.6"
-  }
+  "dependencies": {}
 }
