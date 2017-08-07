@@ -1,5 +1,6 @@
-export const ON_TEST = 'ON_TEST';
-export const ON_SUBMIT = 'ON_SUBMIT';
-export const ON_ENTER = 'ON_ENTER';
-export const ON_ERROR = 'ON_ERROR';
-export const ON_RESEND = 'ON_RESEND';
+export const EXAMPLE_ON_SUBMIT = 'EXAMPLE_ON_SUBMIT';
+export const EXAMPLE_ON_CLICK = 'EXAMPLE_ON_CLICK';
+export const EXAMPLE_ON_RESOLVE = 'EXAMPLE_ON_RESOLVE';
+export const EXAMPLE_ON_DONE = 'EXAMPLE_ON_DONE';
+export const EXAMPLE_ON_ERROR = 'EXAMPLE_ON_ERROR';
+export const EXAMPLE_CLICK_BANNER = 'EXAMPLE_CLICK_BANNER';

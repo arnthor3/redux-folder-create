@@ -2,17 +2,19 @@ import * as CONSTANTS from './example.constants.js';
 import initialState from './example.initialState.js'
 export default (state = initialState, action) => {
   switch (action.type) {
-    case CONSTANTS.ON_TEST:
+    case CONSTANTS.EXAMPLE_ON_SUBMIT:
       return Object.assign({}, state, {});
-    case CONSTANTS.ON_SUBMIT:
+    case CONSTANTS.EXAMPLE_ON_CLICK:
       return Object.assign({}, state, {});
-    case CONSTANTS.ON_ENTER:
+    case CONSTANTS.EXAMPLE_ON_RESOLVE:
       return Object.assign({}, state, {});
 
     
-    case CONSTANTS.ON_ERROR:
+    case CONSTANTS.EXAMPLE_ON_DONE:
       return Object.assign({}, state, {});
-    case CONSTANTS.ON_RESEND:
+    case CONSTANTS.EXAMPLE_ON_ERROR:
+      return Object.assign({}, state, {});
+    case CONSTANTS.EXAMPLE_CLICK_BANNER:
       return Object.assign({}, state, {});
 default:
       return state;

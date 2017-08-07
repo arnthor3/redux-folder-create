@@ -1,22 +1,26 @@
 import * as CONSTANTS from './example.constants.js';
 
-export const onTest = () => ({
-  type: CONSTANTS.ON_TEST,
-  value: '',
-});
 export const onSubmit = () => ({
-  type: CONSTANTS.ON_SUBMIT,
+  type: CONSTANTS.EXAMPLE_ON_SUBMIT,
   value: '',
 });
-export const onEnter = () => ({
-  type: CONSTANTS.ON_ENTER,
+export const onClick = () => ({
+  type: CONSTANTS.EXAMPLE_ON_CLICK,
+  value: '',
+});
+export const onResolve = () => ({
+  type: CONSTANTS.EXAMPLE_ON_RESOLVE,
+  value: '',
+});
+export const onDone = () => ({
+  type: CONSTANTS.EXAMPLE_ON_DONE,
   value: '',
 });
 export const onError = () => ({
-  type: CONSTANTS.ON_ERROR,
+  type: CONSTANTS.EXAMPLE_ON_ERROR,
   value: '',
 });
-export const onResend = () => ({
-  type: CONSTANTS.ON_RESEND,
+export const clickBanner = () => ({
+  type: CONSTANTS.EXAMPLE_CLICK_BANNER,
   value: '',
 });
