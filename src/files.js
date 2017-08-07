@@ -48,7 +48,7 @@ files.write = ({ file, path }) => (
       if (err) {
         rej(err);
       }
-      console.log(`Created ${file}`);
+      console.log(`Created ${path}`);
       res('ok');
     });
   })

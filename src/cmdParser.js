@@ -30,7 +30,7 @@ module.exports = (arr) => {
     return {
       actions: arr.slice(actionIndex + 1, arr.length),
       folder: '',
-      namespace: namespaceIndex > -1
+      namespace: namespaceIndex !== -1
     };
   }
 
@@ -39,14 +39,14 @@ module.exports = (arr) => {
     return {
       folder: arr[folderIndex + 1],
       actions: arr.slice(actionIndex + 1, actionTo),
-      namespace: namespaceIndex > -1
+      namespace: namespaceIndex !== -1
     };
   }
 
   if (typeof arr[folderIndex + 1] !== undefined) {
     return {
       folder: arr[folderIndex + 1],
-      namespace: namespaceIndex > -1
+      namespace: namespaceIndex !== -1
     }
   }
 }

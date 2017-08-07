@@ -8,11 +8,11 @@ const files = require('./src/files');
  * and throw an error
  */
 const cmd = require('./src/cmdParser')(process.argv);
-
 // If the folder option is not set then set
 // the working directory as the folder
 if (cmd.folder.length === 0) {
   cmd.folder = process.cwd();
+  cmd.partial = true;
 }
 
 // if the actions are set then create an array of objects
